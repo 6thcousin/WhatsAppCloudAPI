@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Staybot Dashboard</title>
+  <link rel="stylesheet" href="{% static 'portal/dashboard.css' %}">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Staybot</h2>
+    <ul>
+      <li>Apartments</li>
+      <li>Bookings</li>
+      <li>Hosts</li>
+      <li>Live Chat</li>
+      <li>Live Logs</li>
+      <li>Finance</li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <section>
+      <h3>Apartments</h3>
+      <table>
+        <tr><th>Name</th><th>Location</th><th>Status</th></tr>
+        {% for apt in apartments %}
+          <tr><td>{{ apt.name }}</td><td>{{ apt.location }}</td><td>{{ apt.status }}</td></tr>
+        {% endfor %}
+      </table>
+    </section>
+
+    <section>
+      <h3>Bookings</h3>
+      <ul>
+        {% for b in bookings %}
+          <li>{{ b.guest_name }} - {{ b.date }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section>
+      <h3>Hosts</h3>
+      <ul>
+        {% for h in hosts %}
+          <li>{{ h.name }} ({{ h.email }})</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section>
+      <h3>Live Chat</h3>
+      <ul>
+        {% for msg in chats %}
+          <li><strong>{{ msg.sender }}:</strong> {{ msg.message }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section>
+      <h3>Live Logs</h3>
+      <ul>
+        {% for log in logs %}
+          <li>{{ log.timestamp }} - {{ log.message }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section>
+      <h3>Finance</h3>
+      <table>
+        <tr><th>Category</th><th>Amount</th><th>Date</th></tr>
+        {% for f in finance %}
+          <tr><td>{{ f.category }}</td><td>${{ f.amount }}</td><td>{{ f.date }}</td></tr>
+        {% endfor %}
+      </table>
+    </section>
+  </div>
+</body>
+</html>
