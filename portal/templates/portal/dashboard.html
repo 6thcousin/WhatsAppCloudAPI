@@ -5,20 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Staybot Dashboard</title>
   <link rel="stylesheet" href="{% static 'portal/dashboard.css' %}">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
-  <div class="sidebar">
+  <!-- Mobile Menu Toggle -->
+  <div class="hamburger" onclick="toggleSidebar()">
+    <i data-lucide="menu"></i>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
     <h2>Staybot</h2>
     <ul>
-      <li>Apartments</li>
-      <li>Bookings</li>
-      <li>Hosts</li>
-      <li>Live Chat</li>
-      <li>Live Logs</li>
-      <li>Finance</li>
+      <li><i data-lucide="building-2"></i> <span>Apartments</span></li>
+      <li><i data-lucide="calendar-days"></i> <span>Bookings</span></li>
+      <li><i data-lucide="user"></i> <span>Hosts</span></li>
+      <li><i data-lucide="message-circle"></i> <span>Live Chat</span></li>
+      <li><i data-lucide="activity"></i> <span>Live Logs</span></li>
+      <li><i data-lucide="wallet"></i> <span>Finance</span></li>
     </ul>
   </div>
 
+  <!-- Main Content -->
   <div class="main">
     <section>
       <h3>Apartments</h3>
@@ -76,5 +84,12 @@
       </table>
     </section>
   </div>
+
+  <script>
+    lucide.createIcons();
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("show");
+    }
+  </script>
 </body>
 </html>
